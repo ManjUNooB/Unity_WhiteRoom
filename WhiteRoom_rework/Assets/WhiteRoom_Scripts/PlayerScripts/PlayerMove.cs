@@ -88,7 +88,7 @@ public class PlayerMove : MonoBehaviour
 		if (Input.GetButtonDown("Jump"))// && !groundCheck || groundCheck.isGrounded)
 		{
 			rigidbody.AddForce(Vector3.up * 100 * jumpStrength);
-			playerJumped.Invoke();
+			playerJumped?.Invoke();
 		}
 	}
 }

@@ -22,12 +22,14 @@ public class PlayerMove : MonoBehaviour
 	[SerializeField] float moveSpeed = 5;
 
 
+	//	ダッシュの設定
 	[Header("RunningConfig")]
 	public bool canRun = true;
 	public bool IsRunning{ get; private set; }
 	[SerializeField] float runningSpeed = 9;
 	[SerializeField] KeyCode runningKey = KeyCode.LeftShift;
 
+	//	ジャンプの設定
 	[Header("JumpConfig")]
 	[SerializeField] float jumpStrength = 2;
 	[SerializeField] event System.Action playerJumped;
@@ -88,6 +90,7 @@ public class PlayerMove : MonoBehaviour
 		if (Input.GetButtonDown("Jump"))// && !groundCheck || groundCheck.isGrounded)
 		{
 			rigidbody.AddForce(Vector3.up * 100 * jumpStrength);
+			//	?. <= Invoke()のnull参照を防ぐため？らしい
 			playerJumped?.Invoke();
 		}
 	}
